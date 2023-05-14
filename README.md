@@ -2,31 +2,37 @@
 
 ```rust
 trait Summary {
-    fn new(name: String, attributes: Attributes) -> Self;
+    fn new(name: &'static str, attributes: Attributes) -> Self;
+}
+
+#[derive(Debug)]
+struct Environment {
+    editor           : &'static str,
+    operating_system : &'static str,
 }
 
 #[derive(Debug)]
 struct Programming {
     expert       : [&'static str; 3],
     intermediate : [&'static str; 6],
-    learning     : [&'static str; 4],
+    learning     : [&'static str; 3],
 }
 
 #[derive(Debug)]
 struct Attributes {
-    environment        : String,
     interest           : [&'static str; 5],
     natural_langauge   : [&'static str; 2],
+    environment        : Environment,
     technical_language : Programming,
 }
 
 struct Person {
-    name       : String,
+    name       : &'static str,
     attributes : Attributes,
 }
 
 impl Summary for Person {
-    fn new(name: String, attributes: Attributes) -> Person {
+    fn new(name: &'static str, attributes: Attributes) -> Person {
         Person {
             name,
             attributes,
@@ -36,33 +42,37 @@ impl Summary for Person {
 
 fn main() {
 
+    let environment = Environment {
+        editor           : "vim",
+        operating_system : "linux",
+    };
+
     let programming = Programming {
         expert       : [ "python", "c#", "bash" ],
         intermediate : [ "c", "c++", "vimscript", "lua", "haskell", "java" ],
-        learning     : [ "rust", "wasm", "typescript", "javascript" ],
+        learning     : [ "rust", "wasm", "typescript" ],
     };
 
-    let attributes = Attributes {
+    let my_attributes = Attributes {
 
         interest           : [
             "Distributed-Systems",
-            "Blockchain",
+            "Software-Architecture",
             "Web3-stack",
             "Algorithms",
             "Backend-Engineering"
         ],
-        environment        : String::from("Vim / Neovim"),
         natural_langauge   : [ "English", "Indigenous" ],
+        environment,
         technical_language : programming,
     };
 
+    let my_name = "zipyx";
     let person: Person = Person::new(
-        String::from("zipyx"),
-        attributes,
+        my_name,
+        my_attributes,
     );
 
-    println!("Name: {}", person.get_name());
-    println!("Attributes: {:?}", person.get_attributes());
 }
 ```
 
@@ -70,7 +80,7 @@ fn main() {
 
 <p align="center">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=python,cs,bash,c,cpp,vim,lua,haskell,rust,wasm,typescript,javascript,androidstudio,aws,docker,dotnet,dynamodb,git,github,gitlab,linux,md,mysql,neovim,nodejs,postgres,postman,raspberrypi,sqlite,visualstudio,vscode" />
+    <img src="https://skillicons.dev/icons?i=python,cs,bash,c,cpp,vim,lua,haskell,rust,wasm,typescript,androidstudio,aws,docker,dotnet,dynamodb,git,github,gitlab,linux,md,mysql,neovim,nodejs,postgres,postman,raspberrypi,sqlite,visualstudio,vscode" />
   </a>
 </p>
 
