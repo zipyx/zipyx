@@ -1,4 +1,4 @@
-<h2 align="center">Student <img src="https://s8.gifyu.com/images/979447220829032478.gif" height="25px"> Learner</h2>
+<h2 align="center"><img src="https://s8.gifyu.com/images/979447220829032478.gif" height="25px"></h2>
 
 ```rust
 trait Summary {
@@ -8,6 +8,7 @@ trait Summary {
 #[derive(Debug)]
 struct Environment {
     editor           : &'static str,
+    window_manager   : &'static str',
     operating_system : &'static str,
 }
 
@@ -44,6 +45,7 @@ fn main() {
 
     let environment = Environment {
         editor           : "vim",
+        window_manager   : "dwm",
         operating_system : "linux",
     };
 
